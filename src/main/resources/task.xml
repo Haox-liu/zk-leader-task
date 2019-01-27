@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<scheduler-tasks>
+    <task class="com.hao.task.scheduler.Task" method="task" cron="0/2 * * * * *">
+        <class></class>
+        <method>task</method>
+        <cron></cron>
+    </task>
+
+    <task>
+        <class>com.hao.task.scheduler.Task</class>
+        <method>task</method>
+        <cron>0/2 * * * * *</cron>
+    </task>
+</scheduler-tasks>

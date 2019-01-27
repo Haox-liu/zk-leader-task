@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="[%p]-[%d{yyyy-MM-dd HH:mm:ss}]-%c#%M: %m%n"/>
+        </Console>
+
+        <!--全部info日志-->
+        <!--<RollingFile name="infoLog" fileName="./logs/info.log"-->
+                     <!--filePattern="./logs/info_%d{yyyy-MM-dd_HH}.log">-->
+            <!--<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <!--<PatternLayout pattern="[%p]-[%d{yyyy-MM-dd HH:mm:ss}]-%c#%M: %m%n" />-->
+            <!--<Policies>-->
+                <!--&lt;!&ndash; 每隔12小时生成一个日志文件 &ndash;&gt;-->
+                <!--<TimeBasedTriggeringPolicy modulate="true" interval="12" />-->
+            <!--</Policies>-->
+            <!--&lt;!&ndash; 最多保存60份，即保存30天的日志 &ndash;&gt;-->
+            <!--<DefaultRolloverStrategy max="60" />-->
+        <!--</RollingFile>-->
+
+        <!--请求和响应信息日志-->
+        <!--<RollingFile name="requestLog"  fileName="./logs/request.log"-->
+                     <!--filePattern="./logs/request_%d{yyyy-MM-dd_HH}.log">-->
+            <!--<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <!--<PatternLayout pattern="[%p]-[%d{yyyy-MM-dd HH:mm:ss}]-%c#%M: %m%n" />-->
+            <!--<Policies>-->
+                <!--&lt;!&ndash; 每隔12小时生成一个日志文件 &ndash;&gt;-->
+                <!--<TimeBasedTriggeringPolicy modulate="true" interval="12" />-->
+            <!--</Policies>-->
+            <!--&lt;!&ndash; 最多保存60份，即保存30天的日志 &ndash;&gt;-->
+            <!--<DefaultRolloverStrategy max="60" />-->
+        <!--</RollingFile>-->
+
+    </Appenders>
+
+
+    <Loggers>
+        <!--&lt;!&ndash;请求和响应信息另存到request.log&ndash;&gt;-->
+        <!--<Logger name="com.linkeye.miner.aop.RequestAspect" level="info">-->
+            <!--<AppenderRef ref="requestLog"/>-->
+        <!--</Logger>-->
+        <!--&lt;!&ndash;控制台打印sql,level为trace或debug&ndash;&gt;-->
+        <!--<Logger name="com.linkeye.miner.dao" level="warn" additivity="false">-->
+            <!--<AppenderRef ref="console"/>-->
+        <!--</Logger>-->
+
+        <Root level="info">
+            <AppenderRef ref="console"/>
+            <!--<AppenderRef ref="infoLog" />-->
+        </Root>
+    </Loggers>
+</Configuration>
