@@ -51,9 +51,13 @@ public class TaskServerElection {
 
 
     public boolean isLeader() throws Exception {
-        //return leaderLatch.hasLeadership();
 
-        return leaderLatch.await(30, TimeUnit.SECONDS);
+        //选举等待，超时断开连接
+        //return leaderLatch.await(30, TimeUnit.SECONDS);
+
+        //选举等待，无超时，用作主备切换
+        leaderLatch.await();
+        return leaderLatch.hasLeadership();
     }
 
 

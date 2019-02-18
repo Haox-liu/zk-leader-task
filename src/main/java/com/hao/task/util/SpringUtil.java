@@ -17,11 +17,10 @@ public class SpringUtil implements ApplicationContextAware {
         }
     }
 
-    public static ApplicationContext getApplicationContext() {
+    private static ApplicationContext getApplicationContext() {
         return applicationContext;
     }
 
-    //@SuppressWarnings("unchecked")
     public static Object getBean(String name) throws BeansException {
         return applicationContext.getBean(name);
     }

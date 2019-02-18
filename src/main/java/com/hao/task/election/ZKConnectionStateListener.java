@@ -7,6 +7,7 @@ import org.apache.curator.framework.state.ConnectionStateListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//连接状态监听
 public class ZKConnectionStateListener implements ConnectionStateListener {
     private static final Logger logger = LoggerFactory.getLogger(ZKConnectionStateListener.class);
 
@@ -15,18 +16,14 @@ public class ZKConnectionStateListener implements ConnectionStateListener {
         logger.info("Now the server {} state is {}", HostUtil.hostAddress, state.name());
 
         if (ConnectionState.CONNECTED != state) {
-            System.out.println("the server is disconnected");
-
-            //while (true) {
-                try {
-                    logger.error("the server {} is disconnected", HostUtil.hostAddress);
-                    //断开连接后需要做报警处理，发邮件或短信
-                    client.getZookeeperClient().blockUntilConnectedOrTimedOut();
-                    logger.info("the server {} is reconnected", HostUtil.hostAddress);
-                } catch (InterruptedException e) {
-                    logger.error("the server {} is down", HostUtil.hostAddress, e);
-                }
-            //}
+            try {
+                logger.error("the server {} is disconnected", HostUtil.hostAddress);
+                //断开连接后需要做报警处理，发邮件或短信
+                client.getZookeeperClient().blockUntilConnectedOrTimedOut();
+                logger.info("the server {} is reconnected", HostUtil.hostAddress);
+            } catch (InterruptedException e) {
+                logger.error("the server {} is down", HostUtil.hostAddress, e);
+            }
         }
     }
 }
